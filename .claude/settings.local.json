@@ -7,7 +7,11 @@
       "mcp__neon__run_sql_transaction",
       "Bash(npx shadcn@latest *)",
       "Bash(npx tsc *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(git push *)",
+      "Bash(git checkout *)",
+      "Bash(npm install *)",
+      "Bash(git add *)"
     ]
   },
   "enabledMcpjsonServers": [

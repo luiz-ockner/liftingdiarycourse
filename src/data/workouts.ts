@@ -33,7 +33,6 @@ export async function getWorkoutsForUserOnDate(userId: string, date: Date) {
       )
     );
 
-  // Group into workout → exercises → sets
   const workoutMap = new Map<
     number,
     {
@@ -89,4 +88,8 @@ export async function getWorkoutsForUserOnDate(userId: string, date: Date) {
     ...w,
     exercises: Array.from(w.exercises.values()).sort((a, b) => a.order - b.order),
   }));
+}
+
+export async function createWorkout(userId: string, data: { name: string; startedAt: Date }) {
+  return db.insert(workouts).values({ ...data, userId }).returning();
 }
