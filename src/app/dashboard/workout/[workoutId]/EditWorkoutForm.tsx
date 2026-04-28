@@ -61,9 +61,19 @@ export function EditWorkoutForm({ workoutId, defaultValues }: EditWorkoutFormPro
         )}
       </div>
 
-      <Button type="submit" disabled={isSubmitting}>
-        {isSubmitting ? "Saving…" : "Save changes"}
-      </Button>
+      <div className="flex gap-3">
+        <Button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Saving…" : "Save changes"}
+        </Button>
+        <Button
+          type="button"
+          variant="outline"
+          disabled={isSubmitting}
+          onClick={() => router.push("/dashboard")}
+        >
+          Cancel
+        </Button>
+      </div>
     </form>
   );
 }
