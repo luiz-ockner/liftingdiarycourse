@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
@@ -91,22 +92,27 @@ export function WorkoutList({ isoDate, workouts }: Props) {
         ) : (
           <ul className="space-y-6">
             {workouts.map((workout) => (
-              <li key={workout.id} className="rounded-lg border px-5 py-4 space-y-3">
-                <p className="font-medium text-base">{workout.name}</p>
-                {workout.exercises.map((exercise) => (
-                  <div key={exercise.id}>
-                    <p className="text-sm font-medium mb-1">{exercise.name}</p>
-                    <ul className="space-y-1">
-                      {exercise.sets.map((set) => (
-                        <li key={set.id} className="text-sm text-muted-foreground flex gap-4">
-                          <span>Set {set.setNumber}</span>
-                          {set.reps != null && <span>{set.reps} reps</span>}
-                          {set.weightKg != null && <span>{set.weightKg} kg</span>}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
+              <li key={workout.id}>
+                <Link
+                  href={`/dashboard/workout/${workout.id}`}
+                  className="block rounded-lg border px-5 py-4 space-y-3 hover:bg-muted/50 transition-colors"
+                >
+                  <p className="font-medium text-base">{workout.name}</p>
+                  {workout.exercises.map((exercise) => (
+                    <div key={exercise.id}>
+                      <p className="text-sm font-medium mb-1">{exercise.name}</p>
+                      <ul className="space-y-1">
+                        {exercise.sets.map((set) => (
+                          <li key={set.id} className="text-sm text-muted-foreground flex gap-4">
+                            <span>Set {set.setNumber}</span>
+                            {set.reps != null && <span>{set.reps} reps</span>}
+                            {set.weightKg != null && <span>{set.weightKg} kg</span>}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </Link>
               </li>
             ))}
           </ul>
