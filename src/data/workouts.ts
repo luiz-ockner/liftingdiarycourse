@@ -93,3 +93,24 @@ export async function getWorkoutsForUserOnDate(userId: string, date: Date) {
 export async function createWorkout(userId: string, data: { name: string; startedAt: Date }) {
   return db.insert(workouts).values({ ...data, userId }).returning();
 }
+
+export async function getWorkoutById(userId: string, workoutId: number) {
+  const rows = await db
+    .select()
+    .from(workouts)
+    .where(and(eq(workouts.id, workoutId), eq(workouts.userId, userId)))
+    .limit(1);
+  return rows[0] ?? null;
+}
+
+export async function updateWorkout(
+  userId: string,
+  workoutId: number,
+  data: { name: string; startedAt: Date }
+) {
+  return db
+    .update(workouts)
+    .set({ name: data.name, startedAt: data.startedAt, updatedAt: new Date() })
+    .where(and(eq(workouts.id, workoutId), eq(workouts.userId, userId)))
+    .returning();
+}
