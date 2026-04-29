@@ -55,9 +55,14 @@ export function NewWorkoutForm() {
         )}
       </div>
 
-      <Button type="submit" disabled={isSubmitting}>
-        {isSubmitting ? "Creating…" : "Create workout"}
-      </Button>
+      <div className="flex gap-3">
+        <Button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Creating…" : "Create workout"}
+        </Button>
+        <Button type="button" variant="outline" onClick={() => router.back()}>
+          Cancel
+        </Button>
+      </div>
     </form>
   );
 }

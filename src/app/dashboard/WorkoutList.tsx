@@ -80,6 +80,15 @@ export function WorkoutList({ isoDate, workouts }: Props) {
         </Popover>
       </div>
 
+      <div className="mb-6">
+        <Link
+          href="/dashboard/workout/new"
+          className={buttonVariants({ variant: "default" })}
+        >
+          Log new workout
+        </Link>
+      </div>
+
       <section>
         <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wide mb-4">
           Workouts — {format(date, "do MMM yyyy")}
