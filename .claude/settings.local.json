@@ -14,7 +14,16 @@
       "Bash(git add *)",
       "Bash(git commit *)",
       "Bash(git merge *)",
-      "Bash(git stash *)"
+      "Bash(git stash *)",
+      "Bash(pip install *)",
+      "Bash(py --version)",
+      "Bash(py -3 -m pip install psycopg2-binary matplotlib python-dateutil -q)",
+      "Bash(\"/c/Users/ocknerlui/AppData/Local/Microsoft/WindowsApps/python\" -m pip install psycopg2-binary matplotlib python-dateutil -q)",
+      "Bash(python *)",
+      "Bash(python3 *)",
+      "Bash(where py *)",
+      "PowerShell(Get-Command *)",
+      "PowerShell(py *)"
     ]
   },
   "enabledMcpjsonServers": [
